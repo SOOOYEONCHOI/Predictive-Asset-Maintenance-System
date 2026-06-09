@@ -1,0 +1,1 @@
+# PM API 연동 도구 5종: get_equipment_status, predict_single, get_raw_sensor_data, get_model_definitions, compare_model_metrics

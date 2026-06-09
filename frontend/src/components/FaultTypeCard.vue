@@ -1,0 +1,1 @@
+<template><div class="result-card fault-card"></div></template>

@@ -1,0 +1,1 @@
+<template><div class="result-card rul-card"></div></template>

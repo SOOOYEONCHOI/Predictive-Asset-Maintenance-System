@@ -1,0 +1,1 @@
+<template><div class="chat-panel"></div></template>

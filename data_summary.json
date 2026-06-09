@@ -1,0 +1,342 @@
+{
+  "equip_normal_stats": {
+    "MTR-21A01-CNV01": {
+      "ACC": {
+        "mean": 8.873,
+        "std": 0.226
+      },
+      "ENV": {
+        "mean": 6.443,
+        "std": 1.503
+      },
+      "VEL": {
+        "mean": 2.848,
+        "std": 0.591
+      }
+    },
+    "MTR-21A09-CNV01": {
+      "ACC": {
+        "mean": 3.909,
+        "std": 3.736
+      },
+      "ENV": {
+        "mean": 2.491,
+        "std": 2.458
+      },
+      "VEL": {
+        "mean": 1.149,
+        "std": 0.927
+      }
+    },
+    "MTR-21A12-CNV01": {
+      "ACC": {
+        "mean": 6.453,
+        "std": 4.426
+      },
+      "ENV": {
+        "mean": 4.579,
+        "std": 3.264
+      },
+      "VEL": {
+        "mean": 1.869,
+        "std": 1.288
+      }
+    },
+    "MTR-22B01-CNV01": {
+      "ACC": {
+        "mean": 3.334,
+        "std": 3.666
+      },
+      "ENV": {
+        "mean": 2.6,
+        "std": 2.439
+      },
+      "VEL": {
+        "mean": 1.731,
+        "std": 1.319
+      }
+    },
+    "MTR-22B09-CNV01": {
+      "ACC": {
+        "mean": 0.421,
+        "std": 0.16
+      },
+      "ENV": {
+        "mean": 0.411,
+        "std": 0.127
+      },
+      "VEL": {
+        "mean": 0.38,
+        "std": 0.14
+      }
+    },
+    "MTR-22B12-CNV01": {
+      "ACC": {
+        "mean": 9.925,
+        "std": 4.36
+      },
+      "ENV": {
+        "mean": 8.421,
+        "std": 4.205
+      },
+      "VEL": {
+        "mean": 3.657,
+        "std": 1.695
+      }
+    }
+  },
+  "ucl_thresholds": {
+    "ACC": {
+      "mean": 5.44,
+      "std": 4.676,
+      "ucl_1s": 10.116,
+      "ucl_2s": 14.792,
+      "ucl_3s": 19.469
+    },
+    "ENV": {
+      "mean": 4.137,
+      "std": 3.772,
+      "ucl_1s": 7.908,
+      "ucl_2s": 11.68,
+      "ucl_3s": 15.452
+    },
+    "VEL": {
+      "mean": 1.936,
+      "std": 1.549,
+      "ucl_1s": 3.485,
+      "ucl_2s": 5.034,
+      "ucl_3s": 6.582
+    }
+  },
+  "anomaly_history": {
+    "MTR-21A01-CNV01": {
+      "type": "drift",
+      "periods": [
+        [
+          "2026-05-01",
+          "2026-05-10"
+        ]
+      ],
+      "recovered": false
+    },
+    "MTR-21A09-CNV01": {
+      "type": "spike",
+      "periods": [
+        [
+          "2026-04-09",
+          "2026-04-19"
+        ]
+      ],
+      "recovered": true
+    },
+    "MTR-21A12-CNV01": {
+      "type": "creep",
+      "periods": [
+        [
+          "2026-04-26",
+          "2026-04-28"
+        ]
+      ],
+      "recovered": true
+    },
+    "MTR-22B01-CNV01": {
+      "type": "spike",
+      "periods": [
+        [
+          "2026-04-17",
+          "2026-04-19"
+        ]
+      ],
+      "recovered": true
+    },
+    "MTR-22B09-CNV01": {
+      "type": "recurring",
+      "periods": [
+        [
+          "2026-04-08",
+          "2026-04-10"
+        ],
+        [
+          "2026-05-04",
+          "2026-05-06"
+        ]
+      ],
+      "recovered": true
+    },
+    "MTR-22B12-CNV01": {
+      "type": "recurring",
+      "periods": [
+        [
+          "2026-04-15",
+          "2026-04-17"
+        ],
+        [
+          "2026-05-08",
+          "2026-05-10"
+        ]
+      ],
+      "recovered": false
+    }
+  },
+  "linear_coefficients": {
+    "ARDRegression": {
+      "ACC": 0.0,
+      "ENV": -0.0161,
+      "VEL": -0.0593,
+      "절편": 0.8736
+    },
+    "BayesianRidge": {
+      "ACC": -0.0038,
+      "ENV": -0.013,
+      "VEL": -0.0582,
+      "절편": 0.8777
+    },
+    "ElasticNetCV": {
+      "ACC": -0.0038,
+      "ENV": -0.0123,
+      "VEL": -0.0587,
+      "절편": 0.8756
+    },
+    "ElasticNet": {
+      "ACC": 0.0,
+      "ENV": -0.0323,
+      "VEL": -0.0223,
+      "절편": 0.8135
+    },
+    "HuberRegressor": {
+      "ACC": 0.1326,
+      "ENV": -0.4845,
+      "VEL": -0.099,
+      "절편": 0.4142
+    },
+    "LinearRegression": {
+      "ACC": -0.0044,
+      "ENV": -0.011,
+      "VEL": -0.0601,
+      "절편": 0.8773
+    },
+    "LinearSVR": {
+      "ACC": 0.1146,
+      "ENV": -0.4431,
+      "VEL": -0.1233,
+      "절편": 0.4044
+    },
+    "Ridge": {
+      "ACC": -0.0044,
+      "ENV": -0.011,
+      "VEL": -0.0601,
+      "절편": 0.8773
+    },
+    "RidgeCV": {
+      "ACC": -0.0042,
+      "ENV": -0.0114,
+      "VEL": -0.0597,
+      "절편": 0.8774
+    },
+    "SGDRegressor": {
+      "ACC": -0.0685,
+      "ENV": -0.124,
+      "VEL": -0.2401,
+      "절편": 0.4543
+    },
+    "TweedieRegressor": {
+      "ACC": -0.0898,
+      "ENV": -0.1038,
+      "VEL": -0.1254,
+      "절편": 0.455
+    }
+  },
+  "adopted_models": [
+    {
+      "ALGO_NM": "ExtraTreesRegressor ",
+      "R2_VAL": 0.86,
+      "RMSE_VAL": 0.187,
+      "MAE_VAL": 0.062
+    },
+    {
+      "ALGO_NM": "RandomForestRegressor",
+      "R2_VAL": 0.845,
+      "RMSE_VAL": 0.197,
+      "MAE_VAL": 0.068
+    },
+    {
+      "ALGO_NM": "HistGradientBoostingRegressor",
+      "R2_VAL": 0.844,
+      "RMSE_VAL": 0.197,
+      "MAE_VAL": 0.086
+    },
+    {
+      "ALGO_NM": "ARDRegression",
+      "R2_VAL": 0.703,
+      "RMSE_VAL": 0.272,
+      "MAE_VAL": 0.198
+    },
+    {
+      "ALGO_NM": "ElasticNetCV",
+      "R2_VAL": 0.702,
+      "RMSE_VAL": 0.273,
+      "MAE_VAL": 0.198
+    },
+    {
+      "ALGO_NM": "Ridge",
+      "R2_VAL": 0.702,
+      "RMSE_VAL": 0.273,
+      "MAE_VAL": 0.198
+    },
+    {
+      "ALGO_NM": "LinearRegression",
+      "R2_VAL": 0.702,
+      "RMSE_VAL": 0.273,
+      "MAE_VAL": 0.198
+    },
+    {
+      "ALGO_NM": "RidgeCV",
+      "R2_VAL": 0.702,
+      "RMSE_VAL": 0.273,
+      "MAE_VAL": 0.198
+    },
+    {
+      "ALGO_NM": "BayesianRidge",
+      "R2_VAL": 0.702,
+      "RMSE_VAL": 0.273,
+      "MAE_VAL": 0.198
+    },
+    {
+      "ALGO_NM": "SGDRegressor",
+      "R2_VAL": 0.689,
+      "RMSE_VAL": 0.279,
+      "MAE_VAL": 0.199
+    },
+    {
+      "ALGO_NM": "ElasticNet",
+      "R2_VAL": 0.655,
+      "RMSE_VAL": 0.294,
+      "MAE_VAL": 0.228
+    },
+    {
+      "ALGO_NM": "LinearSVR",
+      "R2_VAL": 0.641,
+      "RMSE_VAL": 0.3,
+      "MAE_VAL": 0.196
+    },
+    {
+      "ALGO_NM": "HuberRegressor",
+      "R2_VAL": 0.64,
+      "RMSE_VAL": 0.3,
+      "MAE_VAL": 0.196
+    },
+    {
+      "ALGO_NM": "TweedieRegressor",
+      "R2_VAL": 0.629,
+      "RMSE_VAL": 0.304,
+      "MAE_VAL": 0.248
+    }
+  ],
+  "model_config": {
+    "pred_interval": "1D",
+    "train_interval": "30D",
+    "total_frame": "AUTO_3M",
+    "train_ratio": 0.8,
+    "pred_ratio": 0.2
+  }
+}
