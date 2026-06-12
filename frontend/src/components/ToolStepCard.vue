@@ -41,18 +41,18 @@ const label = computed(() =>
   display: flex; align-items: center; gap: 7px;
   padding: 6px 10px; cursor: pointer; user-select: none; transition: background .12s;
 }
-.step-head:hover { background: #EDEEF2; }
+.step-head:hover { background: var(--surface-2); }
 .step-icon {
   width: 20px; height: 20px; border-radius: 5px;
   display: grid; place-items: center; flex-shrink: 0;
 }
-.step-icon.call   { background: #EDE9FE; color: #6D28D9; }
+.step-icon.call   { background: var(--brand-soft); color: var(--brand); }
 .step-icon.result { background: var(--success-soft); color: var(--success); }
 .step-label {
   flex: 1; font-family: var(--mono); font-size: 11px; font-weight: 600;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.step-label.call   { color: #6D28D9; }
+.step-label.call   { color: var(--brand); }
 .step-label.result { color: var(--success); }
 .step-toggle { font-size: 8px; color: var(--text-4); transition: transform .18s; flex-shrink: 0; }
 .step-toggle.open { transform: rotate(90deg); }

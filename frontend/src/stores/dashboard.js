@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const PM_API_BASE = 'http://localhost:8000'
+const PM_API_BASE = import.meta.env.VITE_PM_API_BASE || 'http://localhost:8000'
 
 export const useDashboardStore = defineStore('dashboard', {
   state: () => ({

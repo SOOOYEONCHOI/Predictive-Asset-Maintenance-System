@@ -48,8 +48,8 @@
       <div class="empty-state" v-if="chat.messages.length === 0">
         <div class="empty-icon">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7H3a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" fill="#5B6CF6" opacity=".4"/>
-            <path d="M5 18a7.002 7.002 0 0 0 14 0H5z" fill="#5B6CF6" opacity=".2"/>
+            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7H3a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z" fill="#3D695F" opacity=".4"/>
+            <path d="M5 18a7.002 7.002 0 0 0 14 0H5z" fill="#3D695F" opacity=".2"/>
           </svg>
         </div>
         <p class="empty-title">설비 상태에 대해 자연어로 질문하세요</p>
@@ -250,7 +250,7 @@ watch(() => chat.messages, scrollBottom, { deep: true })
 .agent-info { display: flex; align-items: center; gap: 10px; }
 .agent-av {
   width: 34px; height: 34px; border-radius: 9px;
-  background: linear-gradient(135deg,#5B6CF6,#8B5CF6);
+  background: linear-gradient(135deg,var(--brand),var(--brand-deep));
   display: grid; place-items: center; color: #fff; flex-shrink: 0;
 }
 .agent-name { font-weight: 700; font-size: 13.5px; }
@@ -301,8 +301,8 @@ watch(() => chat.messages, scrollBottom, { deep: true })
   width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
   display: grid; place-items: center; font-size: 11.5px; font-weight: 700; color: #fff;
 }
-.user-av  { background: linear-gradient(135deg,#4A6BB5,#2A3F8F); }
-.agent-msg-av { background: linear-gradient(135deg,#5B6CF6,#8B5CF6); }
+.user-av  { background: linear-gradient(135deg,var(--brand),var(--brand-deep)); }
+.agent-msg-av { background: linear-gradient(135deg,#C57A47,#A8623A); }
 .msg-body { max-width: 720px; display: flex; flex-direction: column; gap: 4px; }
 .msg-row.user .msg-body { align-items: flex-end; }
 .msg-sender { font-size: 11px; color: var(--text-3); font-weight: 500; padding: 0 3px; }
@@ -324,7 +324,7 @@ watch(() => chat.messages, scrollBottom, { deep: true })
 }
 .answer-head {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 13px; background: linear-gradient(90deg,#F0F4FF,#F8F9FF);
+  padding: 8px 13px; background: linear-gradient(90deg,var(--brand-soft),var(--surface-2));
   border-bottom: 1px solid var(--border);
   font-size: 11.5px; color: var(--brand); font-weight: 600;
 }
@@ -374,7 +374,7 @@ watch(() => chat.messages, scrollBottom, { deep: true })
 .md-body :deep(th), .md-body :deep(td) { padding: 5px 9px; border: 1px solid var(--border); text-align: left; }
 .md-body :deep(th) { background: var(--bg); font-weight: 600; }
 .md-body :deep(pre) {
-  background: #1E2433; color: #E2E8F0; border-radius: var(--r-md);
+  background: #2E2A26; color: #EDE6DD; border-radius: var(--r-md);
   padding: 12px 14px; overflow-x: auto; margin-bottom: 8px;
 }
 .md-body :deep(pre code) { background: transparent; color: inherit; padding: 0; }
@@ -389,7 +389,7 @@ watch(() => chat.messages, scrollBottom, { deep: true })
   border: 1px solid var(--border-strong); border-radius: 12px;
   padding: 8px 12px; transition: border-color .14s, box-shadow .14s;
 }
-.input-wrap.focused { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(26,86,214,.09); }
+.input-wrap.focused { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(61,105,95,.09); }
 .input-wrap.streaming { opacity: .7; }
 .chat-input {
   flex: 1; border: none; outline: none; background: transparent;

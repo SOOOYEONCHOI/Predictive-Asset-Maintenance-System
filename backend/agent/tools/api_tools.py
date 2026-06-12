@@ -4,7 +4,11 @@ import os
 import httpx
 from langchain_core.tools import tool
 
-PM_API_BASE = os.environ.get("PM_API_BASE", "http://pm-api:8000")
+PM_API_HOSTPORT = os.environ.get("PM_API_HOSTPORT")
+PM_API_BASE = os.environ.get(
+    "PM_API_BASE",
+    f"http://{PM_API_HOSTPORT}" if PM_API_HOSTPORT else "http://pm-api:8000",
+)
 TIMEOUT = 5.0
 
 

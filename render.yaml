@@ -1,0 +1,61 @@
+services:
+  - type: web
+    name: pm-agent-pm-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python -m augment.run_augment && python -m train.train_predictor
+    startCommand: uvicorn pm_api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: DATA_DIR
+        value: /opt/render/project/src/backend/data
+      - key: MODEL_DIR
+        value: /opt/render/project/src/backend/data/model_registry
+
+  - type: web
+    name: pm-agent-agent-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt && python -m augment.run_augment && python -m train.train_predictor && python -m train.train_fault_classifier && python -m train.train_rul_model
+    startCommand: uvicorn agent.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: gpt-4o-mini
+      - key: PM_API_HOSTPORT
+        fromService:
+          name: pm-agent-pm-api
+          type: web
+          property: hostport
+      - key: MONITORING_BACKEND
+        value: langsmith
+      - key: LANGCHAIN_PROJECT
+        value: pm-agent
+      - key: LANGCHAIN_API_KEY
+        sync: false
+      - key: DATA_DIR
+        value: /opt/render/project/src/backend/data
+      - key: MODEL_DIR
+        value: /opt/render/project/src/backend/data/model_registry
+      - key: RECURSION_LIMIT
+        value: 20
+
+  - type: web
+    name: pm-agent-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_AGENT_API_BASE
+        value: https://pm-agent-agent-api.onrender.com
+      - key: VITE_PM_API_BASE
+        value: https://pm-agent-pm-api.onrender.com

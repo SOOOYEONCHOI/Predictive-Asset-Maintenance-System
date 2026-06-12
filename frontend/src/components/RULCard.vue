@@ -83,7 +83,7 @@ const maintDate = computed(() => {
 }
 .card-body { padding: 12px 14px; }
 
-.rul-card-head { background: linear-gradient(90deg,#F0F4FF,#F8F9FF); color: var(--brand); }
+.rul-card-head { background: linear-gradient(90deg,var(--brand-soft),var(--surface-2)); color: var(--brand); }
 .rul-main { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
 .rul-number-wrap { flex-shrink: 0; text-align: center; }
 .rul-number { font-size: 46px; font-weight: 700; line-height: 1; font-family: var(--mono); }

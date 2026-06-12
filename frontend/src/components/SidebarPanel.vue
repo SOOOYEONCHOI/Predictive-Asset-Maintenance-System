@@ -242,6 +242,6 @@ function faultBarWidth(type) {
 }
 .badge-ok { background: var(--success-soft); color: var(--success); }
 .badge-err { background: var(--danger-soft); color: var(--danger); }
-.badge-ls { background: #EEF2FF; color: #4338CA; }
+.badge-ls { background: var(--brand-soft); color: var(--brand); }
 .mono { font-family: var(--mono); font-size: 11px; color: var(--text-2); }
 </style>

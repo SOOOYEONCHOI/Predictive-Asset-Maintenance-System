@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const API_BASE = 'http://localhost:8001'
+const API_BASE = import.meta.env.VITE_AGENT_API_BASE || 'http://localhost:8001'
 
 function generateId() {
   return crypto.randomUUID().replace(/-/g, '').slice(0, 12)

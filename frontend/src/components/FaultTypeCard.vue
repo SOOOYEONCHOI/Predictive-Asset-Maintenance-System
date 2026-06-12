@@ -68,10 +68,10 @@ const evidenceList = computed(() => (props.result.evidence || []).slice(0, 3))
 }
 .card-body { padding: 12px 14px; }
 
-.fault-card-head { background: linear-gradient(90deg,#FAF0FE,#F8F9FF); color: #6D28D9; }
-.fault-card-head.spike { background: linear-gradient(90deg,var(--spike-soft),#FFF5F5); color: var(--spike); }
-.fault-card-head.creep { background: linear-gradient(90deg,var(--creep-soft),#FFFBF0); color: var(--creep); }
-.fault-card-head.drift { background: linear-gradient(90deg,var(--drift-soft),#F0F5FF); color: var(--drift); }
+.fault-card-head { background: linear-gradient(90deg,var(--brand-soft),var(--surface-2)); color: var(--brand); }
+.fault-card-head.spike { background: linear-gradient(90deg,var(--spike-soft),var(--surface-2)); color: var(--spike); }
+.fault-card-head.creep { background: linear-gradient(90deg,var(--creep-soft),var(--surface-2)); color: var(--creep); }
+.fault-card-head.drift { background: linear-gradient(90deg,var(--drift-soft),var(--surface-2)); color: var(--drift); }
 .fault-type-badge {
   padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
   letter-spacing: .03em;

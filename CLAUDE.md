@@ -144,12 +144,12 @@ Drift (누적형):  장기 미복구. ENV 배율 > ACC 배율. 구조적 이완/
 ### 실제 이상 이력 (증강 템플릿으로 사용)
 ```json
 {
-  "MTR-21A01-CNV01": {"type": "drift",     "period": ["2026-05-01","2026-05-10"], "recovered": false, "acc_ratio": 1.8, "env_ratio": 2.4, "vel_ratio": 4.6},
-  "MTR-21A09-CNV01": {"type": "spike",     "period": ["2026-04-09","2026-04-19"], "recovered": true,  "acc_ratio": 3.5, "env_ratio": 5.3, "vel_ratio": 9.6},
-  "MTR-21A12-CNV01": {"type": "creep",     "period": ["2026-04-26","2026-04-28"], "recovered": true,  "acc_ratio": 2.2, "env_ratio": 3.1, "vel_ratio": 7.1},
-  "MTR-22B01-CNV01": {"type": "spike",     "period": ["2026-04-17","2026-04-19"], "recovered": true,  "acc_ratio": 4.3, "env_ratio": 4.7, "vel_ratio": 5.4},
-  "MTR-22B09-CNV01": {"type": "recurring", "period": [["2026-04-08","2026-04-10"],["2026-05-04","2026-05-06"]], "recovered": true, "acc_ratio": 30.3, "vel_ratio": 17.3},
-  "MTR-22B12-CNV01": {"type": "recurring", "period": [["2026-04-15","2026-04-17"],["2026-05-08","2026-05-10"]], "recovered": false, "acc_ratio": 1.5, "vel_ratio": 2.8}
+  "MTR-21A01-CNV01": {"type": "drift",     "period": ["2025-10-13","2025-10-22"], "recovered": false, "acc_ratio": 1.8, "env_ratio": 2.4, "vel_ratio": 4.6},
+  "MTR-21A09-CNV01": {"type": "spike",     "period": ["2025-09-21","2025-10-01"], "recovered": true,  "acc_ratio": 3.5, "env_ratio": 5.3, "vel_ratio": 9.6},
+  "MTR-21A12-CNV01": {"type": "creep",     "period": ["2025-10-08","2025-10-10"], "recovered": true,  "acc_ratio": 2.2, "env_ratio": 3.1, "vel_ratio": 7.1},
+  "MTR-22B01-CNV01": {"type": "spike",     "period": ["2025-09-29","2025-10-01"], "recovered": true,  "acc_ratio": 4.3, "env_ratio": 4.7, "vel_ratio": 5.4},
+  "MTR-22B09-CNV01": {"type": "recurring", "period": [["2025-09-20","2025-09-22"],["2025-10-16","2025-10-18"]], "recovered": true, "acc_ratio": 30.3, "vel_ratio": 17.3},
+  "MTR-22B12-CNV01": {"type": "recurring", "period": [["2025-09-27","2025-09-29"],["2025-10-20","2025-10-22"]], "recovered": false, "acc_ratio": 1.5, "vel_ratio": 2.8}
 }
 ```
 
