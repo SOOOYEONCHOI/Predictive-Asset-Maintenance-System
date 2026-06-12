@@ -17,6 +17,9 @@ services:
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - PM_API_BASE=http://pm-api:8000
+      - MONITORING_BACKEND=${MONITORING_BACKEND}
+      - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY}
     depends_on:
       - pm-api
     command: uvicorn agent.main:app --host 0.0.0.0 --port 8001 --reload

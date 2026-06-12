@@ -85,10 +85,39 @@
             </div>
             <div class="answer-block">
               <div class="answer-head">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                최종 진단 응답
+                <div class="answer-head-label">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  최종 진단 응답
+                </div>
+                <div class="answer-head-actions">
+                  <button
+                    class="copy-btn"
+                    v-if="msg.workOrder"
+                    title="작업 지시서 다운로드"
+                    @click="downloadWorkOrder(msg)"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 2v8m0 0l-3-3m3 3l3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2.5 11.5V13a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button
+                    class="copy-btn"
+                    v-if="msg.answer"
+                    :title="copiedId === msg.id ? '복사됨' : '복사'"
+                    @click="copyAnswer(msg)"
+                  >
+                    <svg v-if="copiedId !== msg.id" width="12" height="12" viewBox="0 0 16 16" fill="none">
+                      <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.4"/>
+                      <path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2H3.5A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.4"/>
+                    </svg>
+                    <svg v-else width="12" height="12" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
               <div class="answer-body">
                 <div class="typing" v-if="msg.isLoading && !msg.answer">
@@ -149,6 +178,25 @@ const chat = useChatStore()
 const messagesEl = ref(null)
 const inputEl = ref(null)
 const focused = ref(false)
+const copiedId = ref(null)
+
+async function copyAnswer(msg) {
+  await navigator.clipboard.writeText(msg.answer)
+  copiedId.value = msg.id
+  setTimeout(() => {
+    if (copiedId.value === msg.id) copiedId.value = null
+  }, 1500)
+}
+
+function downloadWorkOrder(msg) {
+  const blob = new Blob([msg.workOrder], { type: 'text/plain;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `작업지시서_${msg.id}.txt`
+  a.click()
+  URL.revokeObjectURL(url)
+}
 
 function fmt(time) {
   return new Intl.DateTimeFormat('ko-KR', { hour: '2-digit', minute: '2-digit' }).format(new Date(time))
@@ -275,11 +323,19 @@ watch(() => chat.messages, scrollBottom, { deep: true })
   box-shadow: var(--shadow-sm); overflow: hidden;
 }
 .answer-head {
-  display: flex; align-items: center; gap: 6px;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 8px 13px; background: linear-gradient(90deg,#F0F4FF,#F8F9FF);
   border-bottom: 1px solid var(--border);
   font-size: 11.5px; color: var(--brand); font-weight: 600;
 }
+.answer-head-label { display: flex; align-items: center; gap: 6px; }
+.answer-head-actions { display: flex; align-items: center; gap: 2px; }
+.copy-btn {
+  width: 22px; height: 22px; border: none; background: transparent;
+  display: grid; place-items: center; color: var(--text-3);
+  border-radius: 5px; transition: all .13s; flex-shrink: 0;
+}
+.copy-btn:hover { background: var(--brand-soft); color: var(--brand); }
 .answer-body { padding: 12px 14px; font-size: 13px; }
 .typing { display: flex; align-items: center; gap: 7px; color: var(--text-3); font-size: 12px; }
 .typing-dots { display: flex; gap: 3px; }

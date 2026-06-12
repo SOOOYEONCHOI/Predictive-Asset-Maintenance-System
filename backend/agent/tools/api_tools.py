@@ -64,7 +64,9 @@ def predict_single_equip(equip_cd: str, date: str = "") -> str:
 
 @tool
 def get_model_definitions() -> str:
-    """PM API(/models/definitions)에서 모델 정의(TM_MST_MODEL_DEFINE)와 채택 모델 성능(TB_AI_MDL_RSLT_SMMRY, USE_YN=Y) 정보를 조회합니다."""
+    """PM API(/models/definitions)에서 모델 정의(TM_MST_MODEL_DEFINE)와 모델 성능(TB_AI_MDL_RSLT_SMMRY) 정보를 조회합니다.
+    응답의 primary_model이 실제 예측에 사용 중인 주력 모델(ExtraTreesRegressor)이며, adopted_models는 그 외 채택된 비교 모델(USE_YN=Y) 목록입니다.
+    현재 사용 중인 예측 모델과 성능을 물으면 primary_model을 우선 답변하세요."""
     try:
         r = httpx.get(f"{PM_API_BASE}/models/definitions", timeout=TIMEOUT)
         if r.status_code == 503:

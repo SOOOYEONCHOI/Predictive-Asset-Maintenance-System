@@ -1,8 +1,10 @@
 # LangGraph ReAct Single Agent 그래프
 import os
+from pathlib import Path
 
+import aiosqlite
 from langchain_openai import ChatOpenAI
-from langgraph.checkpoint.memory import MemorySaver
+from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 from langgraph.graph import MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode, tools_condition
 
@@ -10,9 +12,11 @@ from agent.prompts.system_prompt import build_system_prompt
 from agent.tools import ALL_TOOLS
 
 RECURSION_LIMIT = int(os.environ.get("RECURSION_LIMIT", "20"))
+DATA_DIR = Path(os.environ.get("DATA_DIR", str(Path(__file__).resolve().parent.parent / "data")))
+DB_PATH = DATA_DIR / "pm_agent.sqlite"
 
 
-def build_graph():
+async def build_graph():
     llm = ChatOpenAI(model=os.environ.get("LLM_MODEL", "gpt-4o-mini"), temperature=0, streaming=True)
     llm_with_tools = llm.bind_tools(ALL_TOOLS)
 
@@ -28,4 +32,5 @@ def build_graph():
     graph_builder.add_conditional_edges("agent", tools_condition)
     graph_builder.add_edge("tools", "agent")
 
-    return graph_builder.compile(checkpointer=MemorySaver())
+    conn = await aiosqlite.connect(str(DB_PATH))
+    return graph_builder.compile(checkpointer=AsyncSqliteSaver(conn))

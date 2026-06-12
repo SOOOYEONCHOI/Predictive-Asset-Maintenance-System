@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-const API_BASE = 'http://localhost:8001'
+const PM_API_BASE = 'http://localhost:8000'
 
 export const useDashboardStore = defineStore('dashboard', {
   state: () => ({
@@ -14,11 +14,9 @@ export const useDashboardStore = defineStore('dashboard', {
   actions: {
     async fetchKPI() {
       try {
-        const res = await fetch(`${API_BASE}/predict/batch`)
+        const res = await fetch(`${PM_API_BASE}/health`)
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const data = await res.json()
-        this.kpi = data.kpi
-        this.faultDistribution = data.faultDistribution
+        await res.json()
         this.apiStatus = 'ok'
         this.lastUpdated = Date.now()
       } catch {

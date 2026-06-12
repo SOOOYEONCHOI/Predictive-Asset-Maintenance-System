@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "formatters": {
+        "simple": {
+            "format": "[%(asctime)s][%(process)d][%(filename)s:%(lineno)d][%(funcName)s():%(lineno)i] %(message)s"
+        },
+        "complex": {
+            "format": "[%(asctime)s][%(process)d][%(levelname)s][%(filename)s:%(lineno)d][%(funcName)s():%(lineno)i] %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "level": "DEBUG"
+        },
+        "file_debug": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "complex",
+            "level": "DEBUG",
+            "maxBytes": 1073741824,
+            "mode": "a",
+            "encoding": "utf8"
+        },
+        "file_info": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "complex",
+            "level": "INFO",
+            "maxBytes": 1073741824,
+            "mode": "a",
+            "encoding": "utf8"
+        },
+        "file_error": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "complex",
+            "level": "ERROR",
+            "maxBytes": 1073741824,
+            "mode": "a",
+            "encoding": "utf8"
+        }
+    },
+    "root": {
+        "handlers": ["console", "file_debug", "file_info","file_error"],
+        "level": "DEBUG"
+    }
+}

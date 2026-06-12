@@ -42,6 +42,7 @@ export const useChatStore = defineStore('chat', {
         steps: [],
         faultResult: null,
         rulResult: null,
+        workOrder: null,
         isLoading: true,
         time: Date.now(),
       }
@@ -66,6 +67,9 @@ export const useChatStore = defineStore('chat', {
           break
         case 'rul_card':
           msg.rulResult = event.content
+          break
+        case 'work_order':
+          msg.workOrder = event.content
           break
         case 'answer':
           msg.isLoading = false

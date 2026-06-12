@@ -11,5 +11,8 @@ joblib
 langchain
 langchain-openai
 langgraph
+langgraph-checkpoint-sqlite
+aiosqlite
 langsmith
 python-dotenv
+deepeval

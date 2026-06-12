@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 from pm_api.predictor import Predictor, STATUS_THRESHOLD
 from pm_api.schemas import (
@@ -44,6 +45,13 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="PM API", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -116,9 +124,12 @@ def raw_data(equip_cd: str, days: int = 14):
 def model_definitions():
     define_df = pd.read_csv(RAW_DIR / "TM_MST_MODEL_DEFINE.csv", encoding="utf-8-sig")
     summary_df = pd.read_csv(RAW_DIR / "TB_AI_MDL_RSLT_SMMRY.csv", encoding="utf-8-sig")
+    summary_df["ALGO_NM"] = summary_df["ALGO_NM"].str.strip()
     adopted_df = summary_df[summary_df["USE_YN"] == "Y"]
+    primary_df = summary_df[summary_df["ALGO_NM"] == "ExtraTreesRegressor"]
 
     return ModelDefinitionsResponse(
         model_define=define_df.to_dict(orient="records"),
+        primary_model=primary_df.to_dict(orient="records")[0] if not primary_df.empty else None,
         adopted_models=adopted_df.to_dict(orient="records"),
     )

@@ -39,38 +39,41 @@
       </div>
     </div>
 
-    <!-- 설비 미니 현황 -->
-    <div class="equip-section">
-      <div class="sec-label">설비 현황</div>
-      <div class="equip-list">
-        <div
-          class="equip-row"
-          v-for="e in EQUIPMENTS"
-          :key="e.id"
-          @click="chat.fillInputText(`${e.id} 현재 상태 분석해줘`)"
-        >
-          <div class="equip-dot" :class="e.status"></div>
-          <span class="equip-id">{{ e.id.replace('-CNV01', '') }}</span>
-          <span class="equip-val">{{ e.val.toFixed(2) }}</span>
-          <span class="equip-badge" :class="e.status">{{ e.badge }}</span>
+    <!-- 설비 현황 / 시나리오 -->
+    <div class="lists-section">
+      <!-- 설비 미니 현황 -->
+      <div class="equip-section">
+        <div class="sec-label">설비 현황</div>
+        <div class="equip-list">
+          <div
+            class="equip-row"
+            v-for="e in EQUIPMENTS"
+            :key="e.id"
+            @click="chat.fillInputText(`${e.id} 현재 상태 분석해줘`)"
+          >
+            <div class="equip-dot" :class="e.status"></div>
+            <span class="equip-id">{{ e.id.replace('-CNV01', '') }}</span>
+            <span class="equip-val">{{ e.val.toFixed(2) }}</span>
+            <span class="equip-badge" :class="e.status">{{ e.badge }}</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- 시나리오 -->
-    <div class="scenario-section">
-      <div class="sec-label">대표 시나리오</div>
-      <div class="scenario-list">
-        <button
-          class="scenario-btn"
-          v-for="s in SCENARIOS"
-          :key="s.id"
-          @click="chat.fillInputText(s.query)"
-        >
-          <span class="s-num">{{ s.id }}</span>
-          {{ s.label }}
-          <span class="s-tag new" v-if="s.id === 4 || s.id === 8">신규</span>
-        </button>
+      <!-- 시나리오 -->
+      <div class="scenario-section">
+        <div class="sec-label">대표 시나리오</div>
+        <div class="scenario-list">
+          <button
+            class="scenario-btn"
+            v-for="s in SCENARIOS"
+            :key="s.id"
+            @click="chat.fillInputText(s.query)"
+          >
+            <span class="s-num">{{ s.id }}</span>
+            {{ s.label }}
+            <span class="s-tag new" v-if="s.id === 4 || s.id === 8">신규</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -162,9 +165,15 @@ function faultBarWidth(type) {
 .fault-bar-fill.drift { background: var(--drift); }
 .fault-count { font-size: 11px; color: var(--text-3); font-family: var(--mono); min-width: 16px; text-align: right; }
 
+/* 설비 현황 / 시나리오 */
+.lists-section {
+  flex: 1; display: flex; flex-direction: column; min-height: 0;
+}
+
 /* 설비 미니 현황 */
 .equip-section {
-  padding: 8px 14px 6px; border-bottom: 1px solid var(--border); flex-shrink: 0;
+  flex: 1; overflow-y: auto; min-height: 0;
+  padding: 8px 14px 6px; border-bottom: 1px solid var(--border);
 }
 .sec-label {
   font-size: 10px; font-weight: 600; color: var(--text-4);
@@ -195,7 +204,8 @@ function faultBarWidth(type) {
 
 /* 시나리오 목록 */
 .scenario-section {
-  padding: 10px 14px 8px; flex: 1; overflow-y: auto; min-height: 0;
+  flex: 1.3; overflow-y: auto; min-height: 0;
+  padding: 10px 14px 8px;
 }
 .scenario-list { display: flex; flex-direction: column; gap: 2px; }
 .scenario-btn {

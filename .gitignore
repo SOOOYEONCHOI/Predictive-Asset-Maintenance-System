@@ -11,3 +11,7 @@ dist/
 
 backend/data/augmented/
 backend/data/model_registry/
+backend/data/pm_agent.sqlite*
+
+.playwright-mcp/
+.deepeval/

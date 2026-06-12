@@ -47,4 +47,5 @@ class RawDataResponse(BaseModel):
 
 class ModelDefinitionsResponse(BaseModel):
     model_define: list[dict]
+    primary_model: dict | None = None
     adopted_models: list[dict]
